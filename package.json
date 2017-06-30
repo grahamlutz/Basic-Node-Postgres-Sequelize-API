@@ -13,11 +13,15 @@
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "mocha": "^3.4.2",
     "nodemon": "^1.11.0"
   },
   "scripts": {
-    "test": "test",
-    "start": "nodemon server.js --exec babel-node --presets es2015,stage-2"
+    "start": "nodemon lib/index.js --exec babel-node",
+    "build": "babel lib -d dist",
+    "serve": "node dist/index.js",
+    "test": "mocha --compilers js:babel-register"
   },
   "author": "",
   "license": "ISC"
