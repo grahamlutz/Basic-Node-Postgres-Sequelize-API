@@ -1,0 +1,24 @@
+{
+  "name": "mpv2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js --exec babel-node --presets es2015,stage-2"
+  },
+  "author": "",
+  "license": "ISC"
+}
