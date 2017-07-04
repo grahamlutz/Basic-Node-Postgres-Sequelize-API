@@ -1,6 +1,6 @@
 {
   "production": {
-    "use_env_variable": "postgres://guamkgyi:p6JxRxTM4R9E0k_FR_zzK7Y-NPJzm00y@pellefant.db.elephantsql.com:5432/guamkgyi",
+    "use_env_variable": "process.env.DB_URL",
     "dialect": "postgres"
   },
   "test": {
