@@ -20,7 +20,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
     "mocha": "^3.4.2",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "request": "^2.81.0"
   },
   "scripts": {
     "start": "nodemon lib/index.js --exec babel-node",
