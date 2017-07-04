@@ -1,5 +1,5 @@
 {
-  "development": {
+  "production": {
     "use_env_variable": "postgres://guamkgyi:p6JxRxTM4R9E0k_FR_zzK7Y-NPJzm00y@pellefant.db.elephantsql.com:5432/guamkgyi",
     "dialect": "postgres"
   },
@@ -8,13 +8,15 @@
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
+    "port": 5432,
     "dialect": "postgres"
   },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+  "development": {
+    "username": "development",
+    "password": "dev",
+    "database": "development",
     "host": "127.0.0.1",
+    "port": 5432,
     "dialect": "postgres"
   }
 }
