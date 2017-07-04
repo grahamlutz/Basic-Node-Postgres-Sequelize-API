@@ -15,22 +15,24 @@ describe('GET all users route - /users', () => {
 });
 
 describe('POST new user route - /users', () => {
-  it('should return 200', done => {
-  	request.post(
-	    'http://localhost:1701/users',
-	    { json: {
-		    username: 'Test',
+	let userID;
+	let url = 'http://localhost:1701/users'
+	it('should return 200', done => {
+		let options = { json: {
+		    username: 'TestUser',
 		    email: 'test@example.com',
-		    password: 'testing'
+		    password: 'TestPassword'
 		  } 
-		},
-	    function (err, res, body) {
+		}
+		request.post(url, options, (err, res, body) => {
 	        if (!err && res.statusCode == 200) {
-	            console.log(body)
+	            userID = body.id
 	            assert.equal(200, res.statusCode);
-      			done();
+	            request.delete(url + '/' + userID, (err, res, body) => {
+				        console.log(res);
+				});
+	  			done();
 	        }
-	    }
-	);
-  });
+	    });
+	});
 });
