@@ -4,6 +4,13 @@ import axios from 'axios';
 import request from 'request';
 
 let url = 'http://localhost:1701/users'
+let createUser;
+let options =   { json: {
+				    username: 'TestUser',
+				    email: 'test@example.com',
+				    password: 'TestPassword'
+				  } 
+				}
 
 describe('GET all users route - /users', () => {
   it('should return 200', done => {
@@ -24,14 +31,7 @@ describe('GET individual users route - /users/:userid', () => {
 });
 
 describe('POST new user route - /users', () => {
-	let createUser;
 	it('should create new user', done => {
-		let options = { json: {
-		    username: 'TestUser',
-		    email: 'test@example.com',
-		    password: 'TestPassword'
-		  } 
-		}
 		createUser = new Promise( (resolve, reject) => {
 			request.post(url, options, (err, res, body) => {
 		        if (!err && res.statusCode == 200) {
@@ -55,12 +55,6 @@ describe('POST new user route - /users', () => {
 
 describe('PUT update individual user = /users/:userid', () => {
 	it('should update user info', done => {
-		let options = { json: {
-		    username: 'TestUser',
-		    email: 'test@example.com',
-		    password: 'TestPassword'
-		  } 
-		}
 		request.put(url + '/5', options, (err, res, body) => {
 			assert.equal(1, res.body);
 			done();
