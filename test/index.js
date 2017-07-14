@@ -25,7 +25,7 @@ describe('GET individual users route - /users/:userid', () => {
 
 describe('POST new user route - /users', () => {
 	let createUser;
-	it('should return 200', done => {
+	it('should create new user', done => {
 		let options = { json: {
 		    username: 'TestUser',
 		    email: 'test@example.com',
@@ -55,8 +55,15 @@ describe('POST new user route - /users', () => {
 
 describe('PUT update individual user = /users/:userid', () => {
 	it('should update user info', done => {
-		request.put(url, options, (err, res, body) => {
-
+		let options = { json: {
+		    username: 'TestUser',
+		    email: 'test@example.com',
+		    password: 'TestPassword'
+		  } 
+		}
+		request.put(url + '/5', options, (err, res, body) => {
+			assert.equal(1, res.body);
+			done();
 		})
 	})
 })
