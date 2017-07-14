@@ -2,7 +2,6 @@ import http from 'http';
 import assert from 'assert';
 import axios from 'axios';
 import request from 'request';
-
 import '../lib/index.js';
 
 describe('GET all users route - /users', () => {
