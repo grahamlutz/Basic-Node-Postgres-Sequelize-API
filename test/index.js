@@ -3,9 +3,11 @@ import assert from 'assert';
 import axios from 'axios';
 import request from 'request';
 
+let url = 'http://localhost:1701/users'
+
 describe('GET all users route - /users', () => {
   it('should return 200', done => {
-    http.get('http://localhost:1701/users', res => {
+    http.get(url, res => {
       assert.equal(200, res.statusCode);
       done();
     });
@@ -14,7 +16,7 @@ describe('GET all users route - /users', () => {
 
 describe('GET individual users route - /users/:userid', () => {
   it('should return 200', done => {
-    http.get('http://localhost:1701/users/5', res => {
+    http.get(url + '/5', res => {
       assert.equal(200, res.statusCode);
       done();
     });
@@ -22,8 +24,7 @@ describe('GET individual users route - /users/:userid', () => {
 });
 
 describe('POST new user route - /users', () => {
-	let userID;
-	let url = 'http://localhost:1701/users'
+	let createUser;
 	it('should return 200', done => {
 		let options = { json: {
 		    username: 'TestUser',
@@ -31,15 +32,31 @@ describe('POST new user route - /users', () => {
 		    password: 'TestPassword'
 		  } 
 		}
-		request.post(url, options, (err, res, body) => {
-	        if (!err && res.statusCode == 200) {
-	            userID = body.id
-	            assert.equal(200, res.statusCode);
-	            request.delete(url + '/' + userID, (err, res, body) => {
-				        console.log(res);
-				});
-	  			done();
-	        }
-	    });
+		createUser = new Promise( (resolve, reject) => {
+			request.post(url, options, (err, res, body) => {
+		        if (!err && res.statusCode == 200) {
+		            let userID = body.id
+		            assert.equal(200, res.statusCode);
+		  			resolve(userID)
+		  			done()
+		        }
+		    });
+		})
 	});
+	it('should successfully delete Test User', done => {
+		createUser.then((userID) => {
+			request.delete(url + '/' + userID, (err, res, body) => {
+			        assert.equal(1, res.body);
+			        done()
+				});
+		})
+	})
 });
+
+describe('PUT update individual user = /users/:userid', () => {
+	it('should update user info', done => {
+		request.put(url, options, (err, res, body) => {
+
+		})
+	})
+})
