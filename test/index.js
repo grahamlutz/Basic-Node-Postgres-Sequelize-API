@@ -4,7 +4,7 @@ import axios from 'axios';
 import request from 'request';
 
 let url = 'http://localhost:1701/users'
-let createUser;
+let userPromise;
 let options =   { json: {
 				    username: 'TestUser',
 				    email: 'test@example.com',
@@ -32,7 +32,7 @@ describe('GET individual users route - /users/:userid', () => {
 
 describe('POST new user route - /users', () => {
 	it('should create new user', done => {
-		createUser = new Promise( (resolve, reject) => {
+		userPromise = new Promise( (resolve, reject) => {
 			request.post(url, options, (err, res, body) => {
 		        if (!err && res.statusCode == 200) {
 		            let userID = body.id
@@ -56,7 +56,7 @@ describe('PUT update individual user = /users/:userid', () => {
 
 describe('DELETE individual user - /users/:userid', () => {
 	it('should successfully delete Test User', done => {
-		createUser.then((userID) => {
+		userPromise.then((userID) => {
 			request.delete(url + '/' + userID, (err, res, body) => {
 			        assert.equal(1, res.body);
 			        done()
