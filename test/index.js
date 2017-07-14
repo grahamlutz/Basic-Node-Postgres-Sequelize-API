@@ -43,14 +43,6 @@ describe('POST new user route - /users', () => {
 		    });
 		})
 	});
-	it('should successfully delete Test User', done => {
-		createUser.then((userID) => {
-			request.delete(url + '/' + userID, (err, res, body) => {
-			        assert.equal(1, res.body);
-			        done()
-				});
-		})
-	})
 });
 
 describe('PUT update individual user = /users/:userid', () => {
@@ -58,6 +50,17 @@ describe('PUT update individual user = /users/:userid', () => {
 		request.put(url + '/5', options, (err, res, body) => {
 			assert.equal(1, res.body);
 			done();
+		})
+	})
+})
+
+describe('DELETE individual user - /users/:userid', () => {
+	it('should successfully delete Test User', done => {
+		createUser.then((userID) => {
+			request.delete(url + '/' + userID, (err, res, body) => {
+			        assert.equal(1, res.body);
+			        done()
+				});
 		})
 	})
 })
