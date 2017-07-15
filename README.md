@@ -11,3 +11,7 @@ MERN stack app to keep track of backpacking gear.
 
 `babel-cli`, `babel-preset-es2015`, and `babel-preset-stage-2` to allow all ES6 features, including `import`.
 
+## Tests
+
+`assert` is used to test routes
+
