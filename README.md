@@ -1,6 +1,6 @@
-# My Virtual Pack Version 2
+# Node-Express-Postgres-Sequelize-API
 
-MERN stack app to keep track of backpacking gear.
+This is currently a basic CRUD API for users.  
 
 ## To Run
 
