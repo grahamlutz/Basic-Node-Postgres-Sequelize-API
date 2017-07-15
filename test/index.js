@@ -14,7 +14,7 @@ let options =   { json: {
 
 describe('GET all users route - /users', () => {
 	it('should return 200', done => {
-		http.get(url, res => {
+		request.get(url, (err, res, body) => {
 			assert.equal(200, res.statusCode);
 			done();
 		});
@@ -34,7 +34,7 @@ describe('POST new user route - /users', () => {
 
 describe('GET individual users route - /users/:userid', () => {
 	it('should return 200', done => {
-		http.get(url + '/' + userID, res => {
+		request.get(url + '/' + userID, (err, res, body) => {
 			assert.equal(200, res.statusCode);
 			done();
 		});
