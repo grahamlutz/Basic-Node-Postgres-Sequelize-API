@@ -1,10 +1,8 @@
-import http from 'http';
 import assert from 'assert';
-import axios from 'axios';
 import request from 'request';
 
-let url = 'http://localhost:1701/users'
 let userID;
+let url = 'http://localhost:1701/users'
 let options =   { json: {
 				    username: 'TestUser',
 				    email: 'test@example.com',
