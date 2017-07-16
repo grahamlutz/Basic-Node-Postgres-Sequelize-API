@@ -33,9 +33,6 @@ describe('POST new user route - /users', () => {
 
 describe('POST login user route - /users/login', () => {
 	it('should return success message', done => {
-		let options   = {};
-		options.id    = userID;
-		options.email = userEmail;
 		request.post(url + '/login', options, (err, res, body) => {
             assert.equal('successful login!', res.body.message);
   			done()
