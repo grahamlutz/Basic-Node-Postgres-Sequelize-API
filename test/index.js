@@ -61,9 +61,9 @@ describe('User Routes', () => {
 	describe('DELETE individual user - /users/:userid', () => {
 		it('should successfully delete Test User', done => {
 			request.delete(url + '/' + userID, (err, res, body) => {
-			        assert.equal(1, res.body);
-			        done()
-				});
+		        assert.equal(1, res.body);
+		        done()
+			});
 		})
 	})
 })
