@@ -1,7 +1,7 @@
 import assert from 'assert';
 import request from 'request';
 
-let userID;
+let userID, userEmail;
 let url = 'http://localhost:1701/users'
 let options =   { json: {
 				    username: 'TestUser',
@@ -23,12 +23,25 @@ describe('GET all users route - /users', () => {
 describe('POST new user route - /users', () => {
 	it('should create new user', done => {
 		request.post(url, options, (err, res, body) => {
-            userID = body.id
+            userID    = body.id
+            userEmail = body.email
             assert.equal(200, res.statusCode);
   			done()
 	    });
 	});
 });
+
+describe('POST login user route - /users/login', () => {
+	it('should return success message', done => {
+		let options   = {};
+		options.id    = userID;
+		options.email = userEmail;
+		request.post(url + '/login', options, (err, res, body) => {
+            assert.equal('successful login!', res.body.message);
+  			done()
+	    });
+	})
+})
 
 describe('GET individual users route - /users/:userid', () => {
 	it('should return 200', done => {
